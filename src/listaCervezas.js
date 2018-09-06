@@ -3,18 +3,68 @@ import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
+
 import logo from './logo.svg';
 import cerveza from './cerveza-2.JPG'
 import './App.css';
 
 
+class CardCerveza extends Component{
+  constructor(props){
+    super()
+  }
+
+  render(){
+    return(
+      <Card>
+        <CardContent>
+          <Flippy
+            flipOnHover={false} // default false
+            flipOnClick={true} // default false
+            flipDirection="horizontal" // horizontal or vertical
+            ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
+            // if you pass isFlipped prop component will be controlled component.
+            // and other props, which will go to div
+            style={{ width: '250px', height: '300px' }} /// these are optional style, it is not necessary
+          >
+            <FrontSide>
+              <img src={cerveza} className= "imagenFront"></img>
+            </FrontSide>
+            <BackSide
+              style={{ backgroundColor: '#175852'}}>
+              {this.props.nombre}
+            </BackSide>
+          </Flippy>
+        </CardContent>
+      </Card>
+    );
+  }
+
+}
+
+
+
 class ListaCervezas extends Component {
+
 
   constructor(){
     super();
+    this.state={
+      ready:false
+
+    }
   }
 
   componentWillMount(){
+
     var cervezasArray = [];
 
     cervezasArray [0]={
@@ -52,36 +102,40 @@ class ListaCervezas extends Component {
       nombre : 'cerveza 6',
       precio : 45.00,
     };
+
+    this.setState({
+      arraCervezas:cervezasArray,
+      ready:true
+      })
   }
 
   render() {
+
+    const isReady = this.state.ready;
+
+    console.log(this.cervezasArray)
+
     return (
+      <div>
 
-      // ... component class
+      { isReady ? (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+          {this.state.arraCervezas.map((it)=>{
+            return(<CardCerveza nombre={it.nombre}/>)
+          })}
+          </TableBody>
+        </Table>
+      ) : (
+          <h1>NO</h1>
+      )}
 
-      	// .. return
-        <Card>
-          <CardContent>
-            <Flippy
-              flipOnHover={false} // default false
-              flipOnClick={true} // default false
-              flipDirection="horizontal" // horizontal or vertical
-              ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
-              // if you pass isFlipped prop component will be controlled component.
-              // and other props, which will go to div
-              style={{ width: '250px', height: '300px' }} /// these are optional style, it is not necessary
-            >
-              <FrontSide>
-                <img src={cerveza} className= "imagenFront"></img>
-              </FrontSide>
-              <BackSide
-                style={{ backgroundColor: '#175852'}}>
-                ROCKS
-              </BackSide>
-            </Flippy>
-          </CardContent>
-        </Card>
-
+      </div>
     );
   }
 }
