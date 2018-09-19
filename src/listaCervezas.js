@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import Card from '@material-ui/core/Card';
+//import {Card} from 'antd';
+//import {Card, Icon, Image} from 'semantic-ui-react'
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+
+import Drawer from '@material-ui/core/Drawer';
 
 import logo from './logo.svg';
 import cerveza from './cerveza-2.JPG'
-import './App.css';
+
+import './listaCervezas.css'
 
 
 class CardCerveza extends Component{
@@ -22,10 +29,13 @@ class CardCerveza extends Component{
     super()
   }
 
+
   render(){
+
     return(
-      <Card>
-        <CardContent>
+
+      <Card  style={{ borderRadius: 8, width: '27vw', height: '36vw'}}>
+        <CardContent style={{backgroundColor: '#A32A1F'}}>
           <Flippy
             flipOnHover={false} // default false
             flipOnClick={true} // default false
@@ -33,15 +43,30 @@ class CardCerveza extends Component{
             ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
             // if you pass isFlipped prop component will be controlled component.
             // and other props, which will go to div
-            style={{ width: '250px', height: '300px' }} /// these are optional style, it is not necessary
+            style={{  width: '23.5vw', height: '33vw' }} /// these are optional style, it is not necessary
           >
-            <FrontSide>
+
+
+            <FrontSide style={{backgroundColor: '#DEE0C1',  borderRadius: 8}}>
               <img src={cerveza} className= "imagenFront"></img>
+              <p className="p-imagen">STOUT</p>
             </FrontSide>
-            <BackSide
-              style={{ backgroundColor: '#175852'}}>
-              {this.props.nombre}
+
+
+            <BackSide style={{ backgroundColor: '#DEE0C1', borderRadius: 8 }}>
+              {/*this.props.nombre*/}
+              <div className = "divCantidad1">
+                <img src={logo} className = "imagenBack1"></img>
+                <p> holi </p>
+
+
+
+              </div>
+
+
             </BackSide>
+
+
           </Flippy>
         </CardContent>
       </Card>
@@ -52,16 +77,15 @@ class CardCerveza extends Component{
 
 
 
+
 class ListaCervezas extends Component {
-
-
   constructor(){
     super();
     this.state={
-      ready:false
-
+      ready:false,
     }
   }
+
 
   componentWillMount(){
 
@@ -103,6 +127,12 @@ class ListaCervezas extends Component {
       precio : 45.00,
     };
 
+    cervezasArray [6]={
+      imagen : 'cerveza',
+      nombre : 'cerveza 7',
+      precio :45.00,
+    };
+
     this.setState({
       arraCervezas:cervezasArray,
       ready:true
@@ -112,30 +142,32 @@ class ListaCervezas extends Component {
   render() {
 
     const isReady = this.state.ready;
-
     console.log(this.cervezasArray)
 
-    return (
-      <div>
 
+    return (
+
+
+      <div className = "div-principal">
       { isReady ? (
-        <Table>
-          <TableHeader>
-            <TableRow>
-              
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-          {this.state.arraCervezas.map((it)=>{
-            return(<CardCerveza nombre={it.nombre}/>)
-          })}
-          </TableBody>
-        </Table>
+        <div>
+          <GridList cellHeight = {500} spacing= {4} cols={3.2}>
+
+              {this.state.arraCervezas.map((it)=>(
+
+                <GridListTile key={it} >
+                  <CardCerveza nombre={it.nombre}/>
+                </GridListTile>
+              ))}
+
+          </GridList>
+          </div>
       ) : (
           <h1>NO</h1>
       )}
 
       </div>
+
     );
   }
 }

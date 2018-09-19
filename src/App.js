@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import logo from './logo.svg';
 import cerveza from './cerveza-2.JPG'
 import './App.css';
-import ListaCervezas from './listaCervezas.js'
+import ListaCervezas from './listaCervezas.js';
+import ListaCervezas2 from './listaCervezas2';
 
 class App extends Component {
+
+
   render() {
+    const theme = createMuiTheme();
+
     return (
     <div className="App">
-      <MuiThemeProvider>
-        <ListaCervezas/>
+      <MuiThemeProvider theme={theme}>
+        <ListaCervezas2/>
       </MuiThemeProvider>
     </div>
     );
