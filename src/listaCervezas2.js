@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import Card from '@material-ui/core/Card';
-//import {Card} from 'antd';
-//import {Card, Icon, Image} from 'semantic-ui-react'
+
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import GridList from '@material-ui/core/GridList';
@@ -13,19 +12,22 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
 import AddIcon from '@material-ui/icons/Add';
 
 import Drawer from '@material-ui/core/Drawer';
 
+import {Button, icon} from 'semantic-ui-react'
+
 import logo from './logo.svg';
+
+import { FaBeer } from 'react-icons/fa';
 
 import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
-import botella from './images/botella.png'
-
+import botella from './images/botella2.png'
 
 import './listaCervezas2.css'
 
@@ -46,7 +48,7 @@ class CardCerveza2 extends Component{
   }
 
   handleClick = () =>{
-    alert("agregaste un six");
+    alert("agregaste un six de "+this.props.nombre);
   }
 
   handleMouseOver = () =>{
@@ -73,30 +75,75 @@ class CardCerveza2 extends Component{
 
       <div>
 
-      { this.state.isOver ? (
 
         <div id="image_div">
           <div class="image_wrapper">
 
-            <div className = "div_botones">
-              <button className="button1" onClick={this.handleClick}>6X</button>
-              <button className="button2" >12X</button>
-              <button className="button3">24X</button>
+            <div className="div_botones">
+
+            <Button animated='vertical'
+                    style={{
+                    backgroundColor:"#2d0f15",
+                    opacity:"0.7",
+                    borderRadius:"80px",
+                    zIndex:"2",
+                    marginTop:"40px",
+                    marginRight:"30px",
+                    width:"200px",
+                    height:"50px",
+                    fontSize:"2.5vh",
+                    textAlign:"center",
+                    color:"#efefef"
+                    }}>
+
+              <Button.Content visible>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x6 </Button.Content>
+              <Button.Content hidden>{this.props.precio}</Button.Content>
+            </Button>
+
+            <Button animated='vertical'
+                    style={{
+                    backgroundColor:"#2d0f15",
+                    opacity:"0.7",
+                    borderRadius:"80px",
+                    zIndex:"2",
+                    marginTop:"40px",
+                    marginRight:"30px",
+                    width:"200px",
+                    height:"50px",
+                    fontSize:"2.5vh",
+                    textAlign:"center",
+                    color:"#efefef"
+                    }}>
+
+              <Button.Content visible >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x12 </Button.Content>
+              <Button.Content hidden> {this.props.precio}</Button.Content>
+            </Button>
+
+            <Button animated='vertical'
+                    style={{
+                    backgroundColor:"#2d0f15",
+                    opacity:"0.7",
+                    borderRadius:"80px",
+                    zIndex:"2",
+                    marginTop:"40px",
+                    marginRight:"30px",
+                    width:"200px",
+                    height:"50px",
+                    fontSize:"2.5vh",
+                    textAlign:"center",
+                    color:"#efefef"
+                    }}>
+
+              <Button.Content visible>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x24 </Button.Content>
+              <Button.Content hidden> {this.props.precio} </Button.Content>
+            </Button>
+
             </div>
 
+            <img src={this.props.imagen} className= "imagenFront"  ></img>
 
-            <img src={this.props.imagen} className= "imagenFront"  onMouseOut={this.handleMouseOut} ></img>
           </div>
         </div>
-
-      ) : (
-
-        <div>
-          <img src={this.props.imagen} className= "imagenFront" onMouseOver={this.handleMouseOver} ></img>
-        </div>
-
-      )}
-
       </div>
 
 
@@ -125,26 +172,26 @@ class ListaCervezas2 extends Component {
 
     cervezasArray [0]={
       imagen : ippolita,
-      nombre : 'cerveza 1',
-      precio : 45.00,
+      nombre : 'Ippolita',
+      precio : "$45.00",
     };
 
     cervezasArray [1]={
       imagen : afortunada,
-      nombre : 'cerveza 2',
-      precio : 45.00,
+      nombre : 'Afortunada',
+      precio : "$45.00",
     };
 
     cervezasArray[2]={
       imagen : californiaAle,
-      nombre : 'cerveza 3',
-      precio : 45.00,
+      nombre : 'California Ale',
+      precio : "$45.00",
     };
 
     cervezasArray[3]={
       imagen : stout,
-      nombre : 'cerveza 4',
-      precio : 45.00,
+      nombre : 'Stout',
+      precio : "$45.00",
     };
 
     /**cervezasArray[4]={
@@ -186,7 +233,7 @@ class ListaCervezas2 extends Component {
               {this.state.arraCervezas.map((it)=>(
 
                 <GridListTile key={it} >
-                  <CardCerveza2 imagen={it.imagen}/>
+                  <CardCerveza2 imagen={it.imagen} nombre={it.nombre} precio={it.precio}/>
                 </GridListTile>
               ))}
 
