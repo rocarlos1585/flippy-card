@@ -8,7 +8,8 @@ import logo from './logo.svg';
 import cerveza from './cerveza-2.JPG'
 import './App.css';
 import ListaCervezas from './listaCervezas.js';
-import ListaCervezas2 from './listaCervezas2';
+import ListaCervezas2 from './listaCervezas2.js';
+import ListaCervezas_mobile from './listaCervezas_mobile.js';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
     return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
-        <ListaCervezas2/>
+        <ListaCervezas_mobile/>
       </MuiThemeProvider>
     </div>
     );

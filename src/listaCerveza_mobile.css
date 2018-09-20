@@ -1,0 +1,27 @@
+.div-principal{
+  margin-left: 5%;
+  margin-right: 2%;
+}
+
+.div-lista{
+  margin-right: 20%;
+  list-style: none;
+}
+
+
+
+.div-flipy{
+  margin-bottom: 30%;
+}
+
+.div-frontSide{
+  position: relative;
+}
+
+.imagenFront{
+  height: 150%;
+  width: 100%;
+  margin-top: 0.5%;
+  margin-left: 0.5%;
+
+}
