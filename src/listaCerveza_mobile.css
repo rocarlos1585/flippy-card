@@ -25,3 +25,26 @@
   margin-left: 0.5%;
 
 }
+
+.div-backSide{
+  position: relative;
+
+}
+
+
+
+.imagenBack{
+
+  height: 150%;
+  width: 100%;
+  filter:opacity(0.3);
+
+  border-radius: 12px;
+}
+
+
+.div-botones-back{
+  
+  position: absolute;
+  z-index: 10;
+}

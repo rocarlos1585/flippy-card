@@ -26,6 +26,7 @@ import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
 import botella from './images/botella2.png'
+import backSide from './images/back-side-background.png'
 
 import './listaCerveza_mobile.css'
 
@@ -34,18 +35,44 @@ import './listaCerveza_mobile.css'
 class CardCerveza extends Component{
   constructor(props){
     super()
+
+    this.state={
+      isFlippedClick:true,
+      isFlippedHover:false,
+
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
 
+  handleClick = () =>{
+    console.log("entro al metodo");
+    this.setState({
+      isFlippedClick:!this.state.isFlippedClick
+    })
+  }
+
+
+  handleMouseOut = () =>{
+
+    console.log("el mouse ya no esta encima");
+    this.setState({
+      isFlippedClick:true,
+      isFlippedHover:true,
+
+    });
+  }
+
   render(){
-
     return(
-
 
       <div className="div-flipy">
           <Flippy
             flipOnHover={false} // default false
-            flipOnClick={true} // default false
+            flipOnClick={this.state.isFlippedClick} // default false
+
             flipDirection="horizontal" // horizontal or vertical
             ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
             // if you pass isFlipped prop component will be controlled component.
@@ -53,23 +80,26 @@ class CardCerveza extends Component{
             style={{height:"100%", width:"120%",  }} /// these are optional style, it is not necessary
           >
 
-
-
-            <FrontSide style={{backgroundColor: '#efefef', borderRadius: 8}}>
+            <FrontSide onClick={this.handleClick} style={{backgroundColor: '#efefef', borderRadius: 8}}>
               <div className="div-frontSide">
                 <img src={this.props.imagen} className= "imagenFront"></img>
               </div>
             </FrontSide>
 
 
-            <BackSide style={{ backgroundColor: '#efefef', borderRadius: 8 }}>
+            <BackSide  style={{ backgroundColor: '#efefef', opacity:"0.9", borderRadius: 8}}>
+              <div className="div-backSide">
+                <div className="div-botones-back">
+                  <Button variant="contained" size="large" color="primary" >cerveza 1</Button>
+                  <Button variant="contained" size="large" color="primary">cerveza 2</Button>
+                  <Button variant="contained" size="large" color="primary">cerveza 3</Button>
+                </div>
 
+                <img src={backSide} onClick={this.handleClick} className="imagenBack"></img>
 
+              </div>
             </BackSide>
-
-
           </Flippy>
-
         </div>
     );
   }
