@@ -16,6 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import AddIcon from '@material-ui/icons/Add';
 
 import Drawer from '@material-ui/core/Drawer';
+import Dialog from '@material-ui/core/Dialog';
 
 import {Button, icon} from 'semantic-ui-react'
 
@@ -27,9 +28,12 @@ import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
+import docepack from './images/docePack.jpg'
 import botella from './images/botella2.png'
 
 import './listaCervezas2.css'
+import ArmadoDocePack from './armadoDocePack.js'
+import CervezasData from './cervezasData.js'
 
 
 
@@ -40,7 +44,10 @@ class CardCerveza2 extends Component{
   constructor(props){
 
     super();
-    this.state={ isOver:false, };
+    this.state={
+      isOver:false,
+      open:false,
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
@@ -48,8 +55,21 @@ class CardCerveza2 extends Component{
   }
 
   handleClick = () =>{
-    alert("agregaste un six de "+this.props.nombre);
+
+    this.setState({open:true});
+
   }
+
+
+  handleClickOpen = () => {
+  this.setState({ open: true });
+  };
+
+  handleClose = () => {
+  this.setState({ open: false });
+};
+
+
 
   handleMouseOver = () =>{
     console.log("el mouse esta encima");
@@ -74,7 +94,60 @@ class CardCerveza2 extends Component{
     return(
 
       <div>
+      {this.props.nombre == "Mix 12 Pack"?(
 
+
+        <div id="image_div">
+          <div class="image_wrapper">
+
+            <div className="div_botones">
+
+            <Button onClick={this.handleClick} animated='vertical'
+                    style={{
+                    backgroundColor:"#2d0f15",
+                    opacity:"0.7",
+                    borderRadius:"20px",
+                    zIndex:"2",
+                    marginTop:"50%",
+                    marginLeft:"40%",
+                    width:"100px",
+                    height:"40px",
+                    fontSize:"2.5vh",
+                    textAlign:"center",
+                    color:"#efefef"
+                    }}>
+
+              <Button.Content visible>&nbsp; &nbsp; ARMALO </Button.Content>
+              <Button.Content hidden>{this.props.precio}</Button.Content>
+            </Button>
+            </div>
+
+            <img src={this.props.imagen} className= "imagenFront"  ></img>
+
+
+
+              <div>
+
+                <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}>
+
+                  <ArmadoDocePack/>
+
+                </Dialog>
+              </div>
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+
+      ):(
 
         <div id="image_div">
           <div class="image_wrapper">
@@ -85,18 +158,18 @@ class CardCerveza2 extends Component{
                     style={{
                     backgroundColor:"#2d0f15",
                     opacity:"0.7",
-                    borderRadius:"80px",
+                    borderRadius:"20px",
                     zIndex:"2",
-                    marginTop:"40px",
-                    marginRight:"30px",
-                    width:"200px",
-                    height:"50px",
+                    marginTop:"10%",
+
+                    width:"100px",
+                    height:"3 0px",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
                     }}>
 
-              <Button.Content visible>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x6 </Button.Content>
+              <Button.Content visible>&nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x6 </Button.Content>
               <Button.Content hidden>{this.props.precio}</Button.Content>
             </Button>
 
@@ -104,18 +177,18 @@ class CardCerveza2 extends Component{
                     style={{
                     backgroundColor:"#2d0f15",
                     opacity:"0.7",
-                    borderRadius:"80px",
+                    borderRadius:"20px",
                     zIndex:"2",
-                    marginTop:"40px",
-                    marginRight:"30px",
-                    width:"200px",
-                    height:"50px",
+                    marginTop:"25%",
+
+                    width:"100px",
+                    height:"30px",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
                     }}>
 
-              <Button.Content visible >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x12 </Button.Content>
+              <Button.Content visible > &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x12 </Button.Content>
               <Button.Content hidden> {this.props.precio}</Button.Content>
             </Button>
 
@@ -123,18 +196,18 @@ class CardCerveza2 extends Component{
                     style={{
                     backgroundColor:"#2d0f15",
                     opacity:"0.7",
-                    borderRadius:"80px",
+                    borderRadius:"20px",
                     zIndex:"2",
-                    marginTop:"40px",
-                    marginRight:"30px",
-                    width:"200px",
-                    height:"50px",
+                    marginTop:"25%",
+
+                    width:"100px",
+                    height:"30px",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
                     }}>
 
-              <Button.Content visible>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x24 </Button.Content>
+              <Button.Content visible> &nbsp; &nbsp; &nbsp; &nbsp; <FaBeer /> x24 </Button.Content>
               <Button.Content hidden> {this.props.precio} </Button.Content>
             </Button>
 
@@ -144,6 +217,12 @@ class CardCerveza2 extends Component{
 
           </div>
         </div>
+
+
+
+
+
+      )}
       </div>
 
 
@@ -167,51 +246,7 @@ class ListaCervezas2 extends Component {
   }
 
   componentWillMount(){
-
-    var cervezasArray = [];
-
-    cervezasArray [0]={
-      imagen : ippolita,
-      nombre : 'Ippolita',
-      precio : "$45.00",
-    };
-
-    cervezasArray [1]={
-      imagen : afortunada,
-      nombre : 'Afortunada',
-      precio : "$45.00",
-    };
-
-    cervezasArray[2]={
-      imagen : californiaAle,
-      nombre : 'California Ale',
-      precio : "$45.00",
-    };
-
-    cervezasArray[3]={
-      imagen : stout,
-      nombre : 'Stout',
-      precio : "$45.00",
-    };
-
-    /**cervezasArray[4]={
-      imagen : 'cerveza',
-      nombre : 'cerveza 5',
-      precio : 45.00,
-    };
-
-    cervezasArray[5]={
-      imagen : 'cerveza',
-      nombre : 'cerveza 6',
-      precio : 45.00,
-    };
-
-    cervezasArray [6]={
-      imagen : 'cerveza',
-      nombre : 'cerveza 7',
-      precio :45.00,
-    };**/
-
+    var cervezasArray = CervezasData();
     this.setState({
       arraCervezas:cervezasArray,
       ready:true

@@ -20,7 +20,7 @@ class App extends Component {
     return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
-        <ListaCervezas_mobile/>
+        <ListaCervezas2/>
       </MuiThemeProvider>
     </div>
     );
