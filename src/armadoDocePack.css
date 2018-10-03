@@ -1,0 +1,72 @@
+.modal-div{
+  height: 140vh;
+  width: 120vh;
+}
+
+.product-selector-div{
+  margin-top: 30%;
+  margin-left: 10%;
+
+}
+
+.product-img{
+
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+
+
+}
+
+div.div-imagenes-productos{
+  position:relative;
+  float: left;
+  
+  border-radius: 50%;
+
+}
+
+div.div-imagenes-productos:hover img{
+  opacity: 0.5;
+
+}
+
+div.div-imagenes-productos:hover button{
+  display: block;
+}
+
+div.div-imagenes-productos button{
+  position: absolute;
+  display: none;
+}
+
+div.div-imagenes-productos button.update {
+    height: 30%;
+    width: 20%;
+    outline: none;
+    color: transparent;
+    background: transparent;
+    border: 2px solid transparent;
+
+    border-radius: 80%;
+    top:30%;
+    left:33%;
+
+    border: none;
+    color: black;
+    padding: -15% 20%;
+
+    display: inline-block;
+    font-size: 5vh;
+    margin: -10% -5%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+div.div-imagenes-productos button.update:hover{
+  background-color: transparent;
+  color:white;
+}

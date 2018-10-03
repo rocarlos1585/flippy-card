@@ -13,6 +13,8 @@
     "react-grid-layout": "^0.16.6",
     "react-icons": "^3.1.0",
     "react-scripts": "^1.1.5",
+    "react-split-pane": "^0.1.84",
+    "react-splitter-layout": "^3.0.1",
     "react-toolbox": "^2.0.0-beta.13",
     "semantic-ui-react": "^0.82.3"
   },

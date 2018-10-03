@@ -122,30 +122,16 @@ class CardCerveza2 extends Component{
             </Button>
             </div>
 
-            <img src={this.props.imagen} className= "imagenFront"  ></img>
+            <img src={this.props.imagen} className= "imagenFront" ></img>
 
-
-
-              <div>
-
-                <Dialog
-                open={this.state.open}
-                onClose={this.handleClose}>
-
+            <div>
+              <Dialog open={this.state.open} onClose={this.handleClose}>
                   <ArmadoDocePack/>
-
-                </Dialog>
-              </div>
-
-
-
+              </Dialog>
+            </div>
 
           </div>
         </div>
-
-
-
-
 
       ):(
 
@@ -217,15 +203,8 @@ class CardCerveza2 extends Component{
 
           </div>
         </div>
-
-
-
-
-
       )}
       </div>
-
-
     );
   }
 
@@ -256,7 +235,6 @@ class ListaCervezas2 extends Component {
   render() {
 
     const isReady = this.state.ready;
-    console.log(this.cervezasArray)
 
     return (
 
