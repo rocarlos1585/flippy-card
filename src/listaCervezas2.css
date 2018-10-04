@@ -1,22 +1,32 @@
 .div-principal2 {
 background-color: #f7f7f7;
-margin-top: 100px;
-margin-left: 70px;
-margin-bottom: 100px;
-border-radius:12px;
+
+margin-left: 10%;
+margin-right: 10%;
 }
+
+.grid-container{
+  display: grid;
+
+  grid-template-columns: auto auto auto;
+}
+.grid-item{
+  padding: 20px;
+}
+
+
 
 #image_div .image_wrapper{
 
   position: relative;
   display: inline-block;
-  border-radius:12px;
+
 }
 
 #image_div .div_botones img{
   float: right;
-  width:60px;
-  height: 100px;
+  width:60%;
+  height: 100%;
   bottom: 40%;
   border-radius:12px;
 }
@@ -24,13 +34,13 @@ border-radius:12px;
 #image_div .image_wrapper:hover .imagenFront{
   filter:blur(10px);
   transition: 0.3s;
-  border-radius:12px;
+  border-radius:12vh;
 }
 
 #image_div .image_wrapper div{
   display: none;
   position: absolute;
-  border-radius:12px;
+
 }
 
 #image_div .image_wrapper:hover div{
@@ -40,6 +50,14 @@ border-radius:12px;
 }
 
 
+.imagenFront {
+  display: block;
+  position: relative;
+  width: 85%;
+  height: 85%;
+  border-radius: 8px;
+
+}
 
 .button1{
     position:absolute;
@@ -63,9 +81,6 @@ border-radius:12px;
     border-radius: 12px;
 
 }
-
-
-
 
 .button2{
     position:absolute;
@@ -105,14 +120,4 @@ border-radius:12px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
-}
-
-.imagenFront {
-
-  display: block;
-  position: relative;
-  width: 85%;
-  height: 85%;
-  border-radius: 8px;
-
 }

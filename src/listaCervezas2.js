@@ -112,9 +112,9 @@ class CardCerveza2 extends Component{
                     borderRadius:"20px",
                     zIndex:"2",
                     marginTop:"50%",
-                    marginLeft:"40%",
-                    width:"100px",
-                    height:"40px",
+                    marginLeft:"30%",
+                    width:"28vh",
+                    height:"8vh",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
@@ -151,8 +151,8 @@ class CardCerveza2 extends Component{
                     zIndex:"2",
                     marginTop:"10%",
 
-                    width:"100px",
-                    height:"3 0px",
+                    width:"28vh",
+                    height:"6vh",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
@@ -170,8 +170,8 @@ class CardCerveza2 extends Component{
                     zIndex:"2",
                     marginTop:"25%",
 
-                    width:"100px",
-                    height:"30px",
+                    width:"28vh",
+                    height:"6vh",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
@@ -189,8 +189,8 @@ class CardCerveza2 extends Component{
                     zIndex:"2",
                     marginTop:"25%",
 
-                    width:"100px",
-                    height:"30px",
+                    width:"28vh",
+                    height:"6vh",
                     fontSize:"2.5vh",
                     textAlign:"center",
                     color:"#efefef"
@@ -243,17 +243,17 @@ class ListaCervezas2 extends Component {
 
       <div className = "div-principal2">
       { isReady ? (
-        <div>
-          <GridList cellHeight = {400} cols={4.2}>
+        <div class="grid-container">
+
 
               {this.state.arraCervezas.map((it)=>(
 
-                <GridListTile key={it} >
+                <div class="grid-item">
                   <CardCerveza2 imagen={it.imagen} nombre={it.nombre} precio={it.precio}/>
-                </GridListTile>
+                </div>
               ))}
 
-          </GridList>
+
           </div>
       ) : (
           <h1>NO</h1>
