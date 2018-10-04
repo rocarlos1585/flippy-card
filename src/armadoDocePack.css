@@ -3,6 +3,12 @@
   width: 120vh;
 }
 
+.pack-list-div{
+  height: 40%;
+  width: 100%;
+
+}
+
 .product-selector-div{
   margin-top: 30%;
   margin-left: 10%;
@@ -21,7 +27,7 @@
 div.div-imagenes-productos{
   position:relative;
   float: left;
-  
+
   border-radius: 50%;
 
 }
