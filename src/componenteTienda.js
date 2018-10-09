@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
+import {withGetScreen} from 'react-getscreen';
 
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -50,59 +51,6 @@ import CervezasData from './cervezasData.js'
 
 
 
-
-const styles = theme => ({
-  card: {
-    width: "100%",
-    height: "100%",
-
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  actions: {
-    display: 'block',
-
-  },
-
-  expand: {
-    transform: 'rotate(0deg)',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-    marginLeft: 'auto',
-    [theme.breakpoints.up('sm')]: {
-      marginRight: -8,
-    },
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-
-  button: {
-  margin: theme.spacing.unit,
-  },
-  leftIcon: {
-    marginRight: theme.spacing.unit,
-  },
-  rightIcon: {
-    marginLeft: theme.spacing.unit,
-  },
-  iconSmall: {
-    fontSize: 20,
-  },
-});
-
-
-
-
-
-
-
 class ComponenteTienda extends Component {
 
 
@@ -142,7 +90,6 @@ class ComponenteTienda extends Component {
 
 }
 
-state = { expanded: false };
 
 handleExpandClick = () => {
   this.setState(state => ({ expanded: !state.expanded }));
@@ -152,98 +99,105 @@ handleExpandClick = () => {
   render() {
 
     const isReady = this.state.ready;
-    const { classes } = this.props;
+
 
     return (
 
       <div className = "div-principal2">
       { isReady ? (
 
+
+
         <div class="grid-container">
 
 
-        <div className="grid-item">
-          <Card id="cardSix" className={classes.card}>
+          <div className="grid-item">
+            <Card id="cardSix" style={{width: "100%", height: "100%",}}>
+             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={ippolita} />
 
-           <CardMedia className={classes.media} image={ippolita} />
+             <CardContent>
+               <Typography component="h1">
+                  Ippolita
+               </Typography>
+             </CardContent>
 
-           <CardContent>
-             <Typography component="h1">
-                Ippolita
-             </Typography>
-           </CardContent>
+             <CardActions style={{display: 'block'}} disableActionSpacing>
 
-           <CardActions className={classes.actions} disableActionSpacing>
+             <Button variant="contained" color="primary" onClick={this.handleClick} >
+               Upload
+               <AddShoppingCartIcon  />
+             </Button>
 
-           <Button variant="contained" color="primary" onClick={this.handleClick} className={classes.button}>
-             Upload
-             <AddShoppingCartIcon className={classes.rightIcon} />
-           </Button>
-
-
-           </CardActions>
-
-          </Card>
-        </div>
+             </CardActions>
+            </Card>
+          </div>
 
 
 
 
 
-        <div className="grid-item">
-          <Card id="cardDoce" className={classes.card}>
+          <div className="grid-item">
+            <Card id="cardDoce" style={{width: "100%", height: "100%",}}>
+             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={ippolita} />
 
-           <CardMedia className={classes.media} image={ippolita} />
+             <CardContent>
+               <Typography component="h1">
+                  Ippolita
+               </Typography>
+             </CardContent>
 
-           <CardContent>
-             <Typography component="h1">
-                Ippolita
-             </Typography>
-           </CardContent>
+             <CardActions style={{display: 'block'}} disableActionSpacing>
 
-           <CardActions className={classes.actions} disableActionSpacing>
+             <Button variant="contained" color="primary" onClick={this.handleClick} >
+               Upload
+               <AddShoppingCartIcon  />
+             </Button>
 
-           <Button variant="contained" color="primary" onClick={this.handleClick} className={classes.button}>
-             Upload
-             <AddShoppingCartIcon className={classes.rightIcon} />
-           </Button>
-
-           </CardActions>
-
-          </Card>
-        </div>
+             </CardActions>
+            </Card>
+          </div>
 
 
-        <div className="grid-item">
-          <Card id="cardVeinticuatro" className={classes.card}>
+          <div className="grid-item">
+            <Card id="cardVeinticuatro" style={{width: "100%", height: "100%",}}>
+             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={ippolita} />
 
-           <CardMedia className={classes.media} image={ippolita} />
+             <CardContent>
+               <Typography component="h1">
+                  Ippolita
+               </Typography>
+             </CardContent>
 
-           <CardContent>
-             <Typography component="h1">
-                Ippolita
-             </Typography>
-           </CardContent>
+             <CardActions style={{display: 'block'}} disableActionSpacing>
 
-           <CardActions className={classes.actions} disableActionSpacing>
+             <Button variant="contained" color="primary" onClick={this.handleClick} >
+               Upload
+               <AddShoppingCartIcon  />
+             </Button>
 
-           <Button variant="contained" color="primary" onClick={this.handleClick} className={classes.button}>
-             Upload
-             <AddShoppingCartIcon className={classes.rightIcon} />
-           </Button>
-
-           </CardActions>
-
-          </Card>
+             </CardActions>
+            </Card>
         </div>
 
 
         <div>
-          <Dialog open={this.state.open} onClose={this.handleClose}>
-              <ArmadoDocePack/>
-          </Dialog>
-       </div>
 
+        { this.props.isMobile() ? (
+          <div className="modal">
+            <Dialog open={this.state.open} onClose={this.handleClose}>
+              <h1>Hola</h1>
+            </Dialog>
+          </div>
+        ) : (
+
+          <div className="modal">
+            <Dialog style={{margin:"5px"}}open={this.state.open} onClose={this.handleClose}>
+                <ArmadoDocePack/>
+            </Dialog>
+          </div>
+        )}
+
+        </div>
 
 
         </div>
@@ -257,8 +211,6 @@ handleExpandClick = () => {
   }
 }
 
-ComponenteTienda.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(ComponenteTienda);
+
+export default withGetScreen (ComponenteTienda);

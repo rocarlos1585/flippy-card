@@ -1,19 +1,31 @@
 .modal-div{
-  height: 140vh;
-  width: 120vh;
+  height: 60vh;
+  width: 90vh;
 }
 
 .pack-list-div{
-  height: 40%;
-  width: 100%;
 
+
+}
+
+.lista-pack{
+  list-style: none;
 }
 
 .product-selector-div{
-  margin-top: 30%;
-  margin-left: 10%;
+
+
 
 }
+ .grid-container{
+
+   display: grid;
+   grid-template-columns: auto auto auto;
+   width: 100%;
+
+
+ }
+
 
 .product-img{
 
@@ -75,4 +87,12 @@ div.div-imagenes-productos button.update {
 div.div-imagenes-productos button.update:hover{
   background-color: transparent;
   color:white;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .modal-div{
+      width:110vh;
+    }
+
 }

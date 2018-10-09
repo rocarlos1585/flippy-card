@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+
 import SplitPane from 'react-split-pane';
+
 import SplitterLayout from 'react-splitter-layout';
+
+import {withGetScreen} from 'react-getscreen';
+
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 import Avatar from '@material-ui/core/Avatar';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import AddIcon from '@material-ui/icons/Add';
+
 import { Button, Image, Item } from 'semantic-ui-react'
 import { Label } from 'semantic-ui-react'
 
@@ -85,16 +93,54 @@ class ArmadoDocePack extends Component {
 
 
   render() {
+
+
+    if (this.props.isMobile()) return (
+
+            <div className="modal-div">
+            <SplitterLayout primaryIndex={0} vertical={true}>
+
+              <div className="pack-list-div">
+                <ul>
+                  {this.state.docePackArraState.map((it, key)=>(
+
+                    <li className="lista-pack" onClick={this.handleClickPackItem.bind(this, key)}>
+                      <PackItem nombre={it.nombre} imagen={it.imagen} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+
+              <div className="product-selector-div">
+
+                  <Carousel centerMode centerSlidePercentage={90} emulateTouch showStatus={false} showIndicators={false}>
+                    {this.state.arraCervezas.map((it,key)=>(
+
+                        
+                          <img style={{width:"32vh", height:"30vh"}} src={it.imagen}/>
+
+
+
+                    ))}
+                </Carousel>
+              </div>
+            </SplitterLayout>
+          </div>
+
+        );
+
+
     return (
 
       <div className="modal-div">
-        <SplitterLayout primaryIndex={0}>
+        <SplitterLayout primaryIndex={0} vertical={false}>
 
           <div className="pack-list-div">
             <ul>
               {this.state.docePackArraState.map((it, key)=>(
 
-                <li onClick={this.handleClickPackItem.bind(this, key)}>
+                <li className="lista-pack" onClick={this.handleClickPackItem.bind(this, key)}>
                   <PackItem nombre={it.nombre} imagen={it.imagen} />
                 </li>
               ))}
@@ -103,20 +149,21 @@ class ArmadoDocePack extends Component {
 
 
           <div className="product-selector-div">
-            <GridList cellHeight = {50} cols={4.2}>
 
+              <div className="grid-container">
                 {this.state.arraCervezas.map((it,key)=>(
 
-                  <GridListTile key={it} >
+
+
 
                     <div class="div-imagenes-productos">
                       <img className="product-img" style={{ borderRadius:80, width: 50, height: 50, }} src={it.imagen}></img>
                       <button onClick={this.handleClick.bind(this, key)} class="update"  value="Update" > + </button>
                     </div>
 
-                  </GridListTile>
+
                 ))}
-            </GridList>
+            </div>
           </div>
         </SplitterLayout>
       </div>
@@ -125,4 +172,4 @@ class ArmadoDocePack extends Component {
   }
 }
 
-export default ArmadoDocePack;
+export default withGetScreen (ArmadoDocePack);

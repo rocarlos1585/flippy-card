@@ -25,6 +25,10 @@ margin-right: 5%;
   padding: 20px;
 }
 
+.modal{
+  width: 100%;
+  
+}
 
 
 #image_div .image_wrapper{
