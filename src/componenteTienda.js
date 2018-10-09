@@ -26,6 +26,21 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 
+import Button from '@material-ui/core/Button';
+
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
+
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+
+
+
 import AddIcon from '@material-ui/icons/Add';
 import Drawer from '@material-ui/core/Drawer';
 import Dialog from '@material-ui/core/Dialog';
@@ -33,7 +48,7 @@ import Icon from '@material-ui/core/Icon';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 
-import {Button, icon} from 'semantic-ui-react'
+
 import { Image, Reveal } from 'semantic-ui-react'
 
 import logo from './logo.svg';
@@ -182,12 +197,47 @@ handleExpandClick = () => {
 
         <div>
 
-        { this.props.isMobile() ? (
-          <div className="modal">
-            <Dialog open={this.state.open} onClose={this.handleClose}>
-              <h1>Hola</h1>
+        { this.props.isMobile() ?(
+
+
+          <div>
+            <Dialog
+              fullScreen
+              open={this.state.open}
+              onClose={this.handleClose}
+
+            >
+              <AppBar style={{position: 'relative'}}>
+                <Toolbar>
+                  <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+                    <CloseIcon />
+                  </IconButton>
+                  <Typography variant="h6" color="inherit" style={{flex: 1}}>
+                    Sound
+                  </Typography>
+                  <Button color="inherit" onClick={this.handleClose}>
+                    save
+                  </Button>
+                </Toolbar>
+              </AppBar>
+              <List>
+                <ListItem button>
+                  <ListItemText primary="Phone ringtone" secondary="Titania" />
+                </ListItem>
+                <Divider />
+                <ListItem button>
+                  <ListItemText primary="Default notification ringtone" secondary="Tethys" />
+                </ListItem>
+              </List>
             </Dialog>
           </div>
+
+
+
+
+
+
+
         ) : (
 
           <div className="modal">
