@@ -10,6 +10,8 @@ import './App.css';
 import ListaCervezas from './listaCervezas.js';
 import ListaCervezas2 from './listaCervezas2.js';
 import ListaCervezas_mobile from './listaCervezas_mobile.js';
+import ComponenteTienda from './componenteTienda.js';
+
 
 class App extends Component {
 
@@ -20,7 +22,7 @@ class App extends Component {
     return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
-        <ListaCervezas2/>
+        <ComponenteTienda/>
       </MuiThemeProvider>
     </div>
     );
