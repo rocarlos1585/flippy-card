@@ -3,16 +3,40 @@
   width: 90vh;
 }
 
+.modal-div-mobile{
+  width: 100%;
+  height: 100%;
+}
+
 .pack-list-div{
 
 
 }
 
+.pack-list-div-mobile{
+  width: 100%;
+  height:40vh;
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+
+}
 .lista-pack{
   list-style: none;
 }
 
-.product-selector-div{
+.lista-pack-mobile{
+  list-style: none;
+  position:relative;
+  float: left;
+}
+
+.product-selector-div-mobile{
+  width:100%;
+  height: 60%;
+  padding-left: 10%;
+  padding-right: 10%;
 
 
 
@@ -24,6 +48,7 @@
    width: 100%;
 
 
+
  }
 
 
@@ -32,7 +57,10 @@
   border-radius: 50%;
   width: 100%;
   height: 100%;
+}
 
+.div-mobile-lista{
+  height: 30vh;
 
 }
 
@@ -40,7 +68,8 @@ div.div-imagenes-productos{
   position:relative;
   float: left;
 
-  border-radius: 50%;
+  
+  padding-top: 60%;
 
 }
 

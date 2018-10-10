@@ -13,6 +13,7 @@ import Avatar from '@material-ui/core/Avatar';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import AddIcon from '@material-ui/icons/Add';
+import Divider from '@material-ui/core/Divider';
 
 import { Button, Image, Item } from 'semantic-ui-react'
 import { Label } from 'semantic-ui-react'
@@ -21,7 +22,8 @@ import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
-import docepack from './images/docePack.jpg'
+import canita from './images/canita.JPG'
+import paleAle from './images/paleAle.JPG'
 import botella from './images/botella2.png'
 
 
@@ -38,10 +40,10 @@ class PackItem extends Component{
   render(){
       return(
         <div>
-          <Label as='a' color='teal' image>
+          <Label as='a' color='red' image>
             <img src={this.props.imagen} />
             {this.props.nombre}
-            <Label.Detail>1</Label.Detail>
+
           </Label>
         </div>
       )
@@ -56,6 +58,7 @@ class ArmadoDocePack extends Component {
 
     this.state={
       docePackArraState:[],
+      auxiliar:0,
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleClickPackItem = this.handleClickPackItem.bind(this);
@@ -74,7 +77,8 @@ class ArmadoDocePack extends Component {
     const evento = key;
 
     this.setState({
-      docePackArraState:this.state.docePackArraState.concat(this.state.arraCervezas[evento])
+      docePackArraState:this.state.docePackArraState.concat(this.state.arraCervezas[evento]),
+      auxiliar:evento,
     })
   }
 
@@ -97,35 +101,57 @@ class ArmadoDocePack extends Component {
 
     if (this.props.isMobile()) return (
 
-            <div className="modal-div">
-            <SplitterLayout primaryIndex={0} vertical={true}>
+            <div className="modal-div-mobil">
 
-              <div className="pack-list-div">
-                <ul>
+
+              <div className="pack-list-div-mobile">
+
                   {this.state.docePackArraState.map((it, key)=>(
 
-                    <li className="lista-pack" onClick={this.handleClickPackItem.bind(this, key)}>
+                    <div className="lista-pack-mobile" onClick={this.handleClickPackItem.bind(this, key)}>
                       <PackItem nombre={it.nombre} imagen={it.imagen} />
-                    </li>
+                    </div>
                   ))}
-                </ul>
+
               </div>
 
+              <Divider/>
 
-              <div className="product-selector-div">
+              <div className="product-selector-div-mobile">
 
-                  <Carousel centerMode centerSlidePercentage={90} emulateTouch showStatus={false} showIndicators={false}>
-                    {this.state.arraCervezas.map((it,key)=>(
-
-                        
-                          <img style={{width:"32vh", height:"30vh"}} src={it.imagen}/>
+                  <Carousel selectedItem={this.state.auxiliar} showStatus={false} dynamicHeight={true} showArrows={false} showThumbs={false} showIndicators={false} infiniteLoop >
 
 
+                        <div onClick={this.handleClick.bind(this, 0)}>
+                          <img style={{width:"100%", height:"80%"}}  src={ippolita}/>
+                        </div>
 
-                    ))}
+                        <div onClick={this.handleClick.bind(this, 1)}>
+                          <img style={{width:"100%", height:"80%"}}  src={afortunada}/>
+                        </div>
+
+                        <div onClick={this.handleClick.bind(this, 2)}>
+                          <img style={{width:"100%", height:"80%"}}  src={californiaAle}/>
+                        </div>
+
+                        <div onClick={this.handleClick.bind(this, 3)}>
+                          <img style={{width:"100%", height:"80%"}}  src={stout}/>
+                        </div>
+
+                        <div onClick={this.handleClick.bind(this, 4)}>
+                          <img style={{width:"100%", height:"80%"}}  src={canita}/>
+                        </div>
+
+                        <div onClick={this.handleClick.bind(this, 5)}>
+                          <img style={{width:"100%", height:"80%"}}  src={paleAle}/>
+                        </div>
+
+
+
                 </Carousel>
               </div>
-            </SplitterLayout>
+
+
           </div>
 
         );
@@ -134,7 +160,7 @@ class ArmadoDocePack extends Component {
     return (
 
       <div className="modal-div">
-        <SplitterLayout primaryIndex={0} vertical={false}>
+        <SplitterLayout primaryIndex={0}  vertical={false}>
 
           <div className="pack-list-div">
             <ul>
@@ -156,9 +182,9 @@ class ArmadoDocePack extends Component {
 
 
 
-                    <div class="div-imagenes-productos">
-                      <img className="product-img" style={{ borderRadius:80, width: 50, height: 50, }} src={it.imagen}></img>
-                      <button onClick={this.handleClick.bind(this, key)} class="update"  value="Update" > + </button>
+                    <div class="div-imagenes-productos" onClick={this.handleClick.bind(this, key)}>
+                      <img className="product-img"  src={it.imagen}></img>
+
                     </div>
 
 

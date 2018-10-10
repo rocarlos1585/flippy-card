@@ -57,8 +57,10 @@ import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
-import docepack from './images/docePack.jpg'
+import canita from './images/canita.JPG'
+import paleAle from './images/paleAle.JPG'
 import botella from './images/botella2.png'
+import docePack from './images/docePack.jpg'
 
 import './componenteTienda.css'
 import ArmadoDocePack from './armadoDocePack.js'
@@ -121,14 +123,11 @@ handleExpandClick = () => {
       <div className = "div-principal2">
       { isReady ? (
 
-
-
         <div class="grid-container">
-
-
           <div className="grid-item">
+
             <Card id="cardSix" style={{width: "100%", height: "100%",}}>
-             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={ippolita} />
+             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={docePack} />
 
              <CardContent>
                <Typography component="h1">
@@ -153,7 +152,7 @@ handleExpandClick = () => {
 
           <div className="grid-item">
             <Card id="cardDoce" style={{width: "100%", height: "100%",}}>
-             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={ippolita} />
+             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={docePack} />
 
              <CardContent>
                <Typography component="h1">
@@ -175,7 +174,7 @@ handleExpandClick = () => {
 
           <div className="grid-item">
             <Card id="cardVeinticuatro" style={{width: "100%", height: "100%",}}>
-             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={ippolita} />
+             <CardMedia style={{height: 0, paddingTop: '56.25%'}} image={docePack} />
 
              <CardContent>
                <Typography component="h1">
@@ -213,29 +212,18 @@ handleExpandClick = () => {
                     <CloseIcon />
                   </IconButton>
                   <Typography variant="h6" color="inherit" style={{flex: 1}}>
-                    Sound
+                    &nbsp;
                   </Typography>
                   <Button color="inherit" onClick={this.handleClose}>
-                    save
+                    Guardar <AddShoppingCartIcon  />
                   </Button>
                 </Toolbar>
               </AppBar>
-              <List>
-                <ListItem button>
-                  <ListItemText primary="Phone ringtone" secondary="Titania" />
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-                </ListItem>
-              </List>
+              <div>
+                <ArmadoDocePack/>
+              </div>
             </Dialog>
           </div>
-
-
-
-
-
 
 
         ) : (

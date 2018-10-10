@@ -2,6 +2,8 @@ import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
+import canita from './images/canita.JPG'
+import paleAle from './images/paleAle.JPG'
 import docepack from './images/docePack.jpg'
 
 export default function CervezasData(){
@@ -34,10 +36,17 @@ export default function CervezasData(){
   };
 
   cervezasArray[4]={
-    imagen:docepack,
-    nombre:"Mix 12 Pack",
-    precio:"$399.00",
-  }
+    imagen : canita,
+    nombre : 'Canita',
+    precio : "$45.00",
+  };
+
+  cervezasArray[5]={
+    imagen : paleAle,
+    nombre : 'Pale Ale',
+    precio : "$45.00",
+  };
+
 
   return cervezasArray;
 }

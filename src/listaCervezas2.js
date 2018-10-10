@@ -28,7 +28,7 @@ import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
 import ippolita from './images/Ippolita.JPG'
 import stout from './images/Stout.JPG'
-import docepack from './images/docePack.jpg'
+
 import botella from './images/botella2.png'
 
 import './listaCervezas2.css'
