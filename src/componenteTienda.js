@@ -77,14 +77,18 @@ class ComponenteTienda extends Component {
     this.state={
       ready:false,
       open:false,
+      limite:0,
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = () =>{
+  handleClick = (key) =>{
 
-    this.setState({open:true});
+    this.setState({
+      limite:key,
+      open:true
+    });
 
   }
 
@@ -131,13 +135,13 @@ handleExpandClick = () => {
 
              <CardContent>
                <Typography component="h1">
-                  Ippolita
+                  Six Pack
                </Typography>
              </CardContent>
 
              <CardActions style={{display: 'block'}} disableActionSpacing>
 
-             <Button variant="contained" color="primary" onClick={this.handleClick} >
+             <Button variant="contained" color="primary" onClick={this.handleClick.bind(this, 6)} >
                Upload
                <AddShoppingCartIcon  />
              </Button>
@@ -156,13 +160,13 @@ handleExpandClick = () => {
 
              <CardContent>
                <Typography component="h1">
-                  Ippolita
+                  Doce Pack
                </Typography>
              </CardContent>
 
              <CardActions style={{display: 'block'}} disableActionSpacing>
 
-             <Button variant="contained" color="primary" onClick={this.handleClick} >
+             <Button variant="contained" color="primary" onClick={this.handleClick.bind(this, 12)} >
                Upload
                <AddShoppingCartIcon  />
              </Button>
@@ -178,13 +182,13 @@ handleExpandClick = () => {
 
              <CardContent>
                <Typography component="h1">
-                  Ippolita
+                  Veinticuatro Pack
                </Typography>
              </CardContent>
 
              <CardActions style={{display: 'block'}} disableActionSpacing>
 
-             <Button variant="contained" color="primary" onClick={this.handleClick} >
+             <Button variant="contained" color="primary" onClick={this.handleClick.bind(this, 24)} >
                Upload
                <AddShoppingCartIcon  />
              </Button>
@@ -220,7 +224,7 @@ handleExpandClick = () => {
                 </Toolbar>
               </AppBar>
               <div>
-                <ArmadoDocePack/>
+                <ArmadoDocePack limite={this.state.limite}/>
               </div>
             </Dialog>
           </div>
@@ -229,8 +233,8 @@ handleExpandClick = () => {
         ) : (
 
           <div className="modal">
-            <Dialog style={{margin:"5px"}}open={this.state.open} onClose={this.handleClose}>
-                <ArmadoDocePack/>
+            <Dialog style={{width:"100%", height:"100%", margin:"5px"}} open={this.state.open} onClose={this.handleClose}>
+                <ArmadoDocePack limite={this.state.limite}/>
             </Dialog>
           </div>
         )}

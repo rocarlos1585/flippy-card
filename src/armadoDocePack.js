@@ -17,6 +17,7 @@ import Divider from '@material-ui/core/Divider';
 
 import { Button, Image, Item } from 'semantic-ui-react'
 import { Label } from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react'
 
 import afortunada from './images/Afortunada.JPG'
 import californiaAle from './images/californiaAle.JPG'
@@ -39,9 +40,9 @@ class PackItem extends Component{
 
   render(){
       return(
-        <div>
-          <Label as='a' color='red' image>
-            <img src={this.props.imagen} />
+        <div className="div-label">
+          <Label as='a' color='red'image>
+            <img src={this.props.imagen}/>
             {this.props.nombre}
 
           </Label>
@@ -57,8 +58,9 @@ class ArmadoDocePack extends Component {
     super();
 
     this.state={
-      docePackArraState:[],
+      packArraState:[],
       auxiliar:0,
+      limiteMessage:false,
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleClickPackItem = this.handleClickPackItem.bind(this);
@@ -76,8 +78,19 @@ class ArmadoDocePack extends Component {
 
     const evento = key;
 
+
+    if(this.state.packArraState.length < this.props.limite){
+
+      this.setState({ packArraState:this.state.packArraState.concat(this.state.arraCervezas[evento]) })
+
+    }
+
+    else if (this.state.packArraState.length >= this.props.limite ){
+      alert("solo puedes agregar "+this.props.limite+" cervezas")
+    }
+
+
     this.setState({
-      docePackArraState:this.state.docePackArraState.concat(this.state.arraCervezas[evento]),
       auxiliar:evento,
     })
   }
@@ -85,12 +98,12 @@ class ArmadoDocePack extends Component {
 
   handleClickPackItem=(key)=>{
 
-    alert("quitaste "+this.state.docePackArraState[key].nombre)
+    alert("quitaste "+this.state.packArraState[key].nombre)
 
-    var array=this.state.docePackArraState;
+    var array=this.state.packArraState;
     array.splice(key,1);
     this.setState({
-      docePackArraState:array,
+      packArraState:array,
     })
 
   }
@@ -106,12 +119,15 @@ class ArmadoDocePack extends Component {
 
               <div className="pack-list-div-mobile">
 
-                  {this.state.docePackArraState.map((it, key)=>(
+                  {this.state.packArraState.map((it, key)=>(
 
                     <div className="lista-pack-mobile" onClick={this.handleClickPackItem.bind(this, key)}>
                       <PackItem nombre={it.nombre} imagen={it.imagen} />
                     </div>
+
+
                   ))}
+
 
               </div>
 
@@ -163,24 +179,25 @@ class ArmadoDocePack extends Component {
         <SplitterLayout primaryIndex={0}  vertical={false}>
 
           <div className="pack-list-div">
-            <ul>
-              {this.state.docePackArraState.map((it, key)=>(
+            <ul className="pack-list-ul">
+
+
+              {this.state.packArraState.map((it, key)=>(
 
                 <li className="lista-pack" onClick={this.handleClickPackItem.bind(this, key)}>
                   <PackItem nombre={it.nombre} imagen={it.imagen} />
                 </li>
               ))}
+
             </ul>
           </div>
+
 
 
           <div className="product-selector-div">
 
               <div className="grid-container">
                 {this.state.arraCervezas.map((it,key)=>(
-
-
-
 
                     <div class="div-imagenes-productos" onClick={this.handleClick.bind(this, key)}>
                       <img className="product-img"  src={it.imagen}></img>
